@@ -2,15 +2,18 @@
 using namespace std;
 
 int main(){
-	int m, n;
+	ios_base::sync_with_stdio(false); 
+	cin.tie(0);
+	cout.tie(0); 
+	int m, n, a;
 	cin >> n >> m;
-	int arr[n+10];
-	int sum[n+10] = {0, };
-	for (int i = 0; i<n; i++){
-		cin >> arr[i];
-		if (i == 0) sum[i] = arr[i];
-		else sum[i] = sum[i-1] + arr[i];
+	int sum[n+10];
+	sum[0] = 0;
+	for (int i = 1; i<=n; i++){
+		cin >> a;
+		sum[i] = sum[i-1] + a;
 	}
+	
 	for (int k = 0; k < m; k++){
 		int i, j;
 		cin >> i >> j;
