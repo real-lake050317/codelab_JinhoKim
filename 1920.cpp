@@ -2,17 +2,17 @@
 #include <algorithm>
 using namespace std;
 
-int n, m;
-int arr[100010];
+long long n, m;
+long long arr[100010];
 
 void binarySearch(int key){
-    int start = 0;
-    int end = n-1;
-    int mid;
+    long long start = 0;
+    long long end = n-1;
+    long long mid;
     while(end >= start){
         mid = (start+end)/2;
         if (arr[mid] == key){
-            cout<<1<<"\n";
+            cout << "1" << endl;
             return;
         } else if(arr[mid] > key){
             end = mid -1;
@@ -20,21 +20,22 @@ void binarySearch(int key){
             start = mid + 1;
         }
     }
-    cout<<0<<"\n";
+    cout << "0" << endl;
     return;
 }
+
 int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cin>>n;
+    ios_base::sync_with_stdio(NULL);
+    cin.tie(NULL);
+    cin >> n;
     for (int i = 0; i<n; i++){
-        cin>>arr[i];
+        cin >> arr[i];
     }
-    cin>>m;
-    sort(arr, arr+m);
+    cin >> m;
+    sort(arr, arr + m);
     for (int i = 0; i<m; i++){
         int num;
-        cin>>num;
+        cin >> num;
         binarySearch(num);
     }
 }
