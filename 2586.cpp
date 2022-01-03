@@ -15,7 +15,7 @@ long long ans;
 
 int main(){
     ios_base::sync_with_stdio(false); 
-	cin.tie(nullptr);
+	cin.tie(NULL);
     cin >> n >> m; 
 	k = n + m;
     for(int i=1; i<=n; i++) cin >> a[i].x, a[i].y = 0;
