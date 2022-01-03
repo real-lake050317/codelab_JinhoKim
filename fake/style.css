@@ -1,0 +1,78 @@
+div {
+    display: block;
+}
+
+.title{
+    font-size: 24px;
+    color: #028AFF;
+    font-weight: bold;
+}
+
+.main {
+    border: 100px;
+}
+
+.warning {
+    color: #f18602;
+    font-weight: bold;
+}
+
+.deco {
+    text-decoration: underline;
+}
+
+.button{
+    color: white;
+    background-color: #028AFF;
+    border-radius: 17.5px;
+    width: 130px;
+    height: 35px
+}
+
+.blue {
+    width: 1000px;
+    height: 3.5px;
+    background-color: blue;
+    margin-top: 10px;
+}
+
+.black {
+    width: 500px;
+    height: 1px;
+    background-color: #F1F1F1;
+}
+
+.main {
+    text-align: left;
+}
+
+.box {
+    margin-left: 100px;
+    margin-top: 100px;
+}
+
+.bluefont {
+    color: blue;
+    font-weight: bold;
+}
+
+.hyperlink {
+    color: purple;
+    text-decoration: underline;
+}
+
+.grey {
+    background-color: #F3F6F7;
+}
+
+.table {
+    border-collapse: collapse; 
+    border-color: #F3F6F7;
+    border-width: 1px;
+}
+
+.info {
+    font-size: 14px;
+    margin-top: 10px;
+    margin-left: 10px
+}
