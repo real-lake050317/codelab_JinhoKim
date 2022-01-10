@@ -1,4 +1,4 @@
-# Problemsolvings repository
+# codelab_JinhoKim repository
 
 ## This is an personal repository of Jinho Kim
 
