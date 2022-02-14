@@ -1,26 +1,59 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <cmath>
 using namespace std;
-int a[1001][1001], n, m, dir, rety, retx, y, x;
-const int dy[] = {1, 0, -1, 0};
-const int dx[] = {0, 1, 0, -1};
 
-int main() {
-    cin >> n >> m;
-    for(int i = n * n; i > 0; i--){
-        a[y][x] = i;
-        if(i == m){rety = y + 1; retx = x + 1;}
-        if(y + dy[dir] < 0 || y + dy[dir] >= n || x + dx[dir] < 0 || x + dx[dir] >= n || a[y + dy[dir]][x + dx[dir]] != 0){
-            dir = (dir + 1) % 4;
-        }
-        y = y + dy[dir];
-        x = x + dx[dir];
-    }
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < n; j++){
-            cout << a[i][j] << " ";
-        }
-        cout <<"\n";
-    }
-    cout << rety << " " << retx << "\n";
-    return 0;
+int N, num, ansx, ansy;
+int board[1000][1000] = {0, };
+const int dx[4] = {-1, 0, 1, 0};
+const int dy[4] = {0, 1, 0, -1};
+
+int main(){
+	cin >> N >> num;
+	int x = 0;
+	int y = 0;
+	int cnt = N*N;
+	int flg = 0;
+	for (int i = 0; i<N-1; i++){
+		board[y][x] = cnt;
+		cnt--;
+		y++;
+	}
+	for (int i = 0; i<N-1; i++){
+		board[y][x] = cnt;
+		cnt--;
+		x++;
+	}
+	for (int i = 0; i<N; i++){
+		board[y][x] = cnt;
+		cnt--;
+		y--;
+	}
+	x = N-1;
+	y = 0;
+	while (cnt){
+		int movex = dx[flg];
+		int movey = dy[flg];
+		if (board[y+movey][x+movex] != 0){
+			flg++;
+			flg %= 4;
+		}
+		else{
+			x += movex;
+			y += movey;
+			board[y][x] = cnt;
+			cnt--;
+		}
+	}
+	
+	for (int i = 0; i<N; i++){
+		for (int j = 0; j<N; j++){
+			cout << board[i][j] << " ";
+			if (board[i][j] == num) {
+				ansx = i;
+				ansy = j;
+			}
+		}
+		cout << "\n";
+	}
+	cout << ansx + 1 << " " << ansy + 1;
 }

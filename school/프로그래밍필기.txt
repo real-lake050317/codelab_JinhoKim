@@ -1,0 +1,13 @@
+args = arguments string
+
+args: 전달 인자, 전달 인수
+
+main -> 프로그램이 시작하자 마자 주어지는 arguments
+
+args[0] -> 첫번째 arguments
+
+새로운 도구 생성
+이름 실행(전달인자실행)
+명령: bin/java.exe
+인수: $(FileNameNoExt) $(Prompt) (인수내용묻기)
+디렉토리 $(FileDir)
