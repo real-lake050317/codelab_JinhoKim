@@ -6,7 +6,7 @@
 + I do PS on <a href = "https://acmicpc.net">acmicpc.net</a>, AKA. BOJ, 백준.
 + This is my personal link: 
   * https://www.acmicpc.net/user/jinojoa317 
-  * https://solved.ac
+  * https://solved.ac/profile/jinojoa317
 
 ### About the repository
 
