@@ -1,42 +1,31 @@
 #include <iostream>
-#include <algorithm>
-
+#include <map>
 using namespace std;
 
-int T, N, M;
+map<int, bool> num;
 
-void solve(int a[], int b[], int p, int q){
-	for (int k = 0; k<M; k++){
-		bool flg = 0;
-		for (int l = 0; l<N; l++){
-			if (b[k] == a[l]) {
-				flg = 1;
-				break;
-			}
-		}
-		cout << flg << "\n";
-	}
-}
+int T;
 
 int main(){
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL); 
+	cin.tie(NULL);
 	cout.tie(NULL);
-	int t, n, m;
+	ios_base::sync_with_stdio(false);
+
 	cin >> T;
-	for (int i = 0; i<T; i++){
+
+	while (T--){
+		int N, M, a;
+		num.clear();
 		cin >> N;
-		int arrn[N+10];
-		for (int j = 0; j<N; j++){
-			cin >> arrn[j];
+		for (int i = 0; i<N; i++){
+			cin >> a;
+			num.insert(pair<int, bool>(a, true));
 		}
-		sort(arrn, arrn + n);
 		cin >> M;
-		int arrm[M+10];
-		for (int j = 0; j<M; j++){
-			cin >> arrm[j];
+		for (int i = 0; i<M; i++){
+			cin >> a;
+			if (num[a] == true) cout << "1" << "\n";
+			else cout << "0" << "\n";
 		}
-		sort(arrm, arrm + m);
-		solve(arrn, arrm, N, M);
 	}
-} 
+}

@@ -1,41 +1,30 @@
 #include <iostream>
-#include <algorithm>
+#include <map>
 using namespace std;
 
-long long n, m;
-long long arr[100010];
+map<int, bool> num;
+int N, M;
 
-void binarySearch(int key){
-    long long start = 0;
-    long long end = n-1;
-    long long mid;
-    while(end >= start){
-        mid = (start+end)/2;
-        if (arr[mid] == key){
-            cout << "1" << endl;
-            return;
-        } else if(arr[mid] > key){
-            end = mid -1;
-        } else{
-            start = mid + 1;
-        }
-    }
-    cout << "0" << endl;
-    return;
-}
 
 int main(){
-    ios_base::sync_with_stdio(NULL);
     cin.tie(NULL);
-    cin >> n;
-    for (int i = 0; i<n; i++){
-        cin >> arr[i];
+	cout.tie(NULL);
+	ios_base::sync_with_stdio(false);
+
+    int a;
+    cin >> N;
+    num.clear();
+
+    for (int i = 0; i<N; i++){
+        cin >> a;
+        num.insert(make_pair(a, true));
     }
-    cin >> m;
-    sort(arr, arr + m);
-    for (int i = 0; i<m; i++){
-        int num;
-        cin >> num;
-        binarySearch(num);
+
+    cin >> M;
+    
+    for (int i = 0; i<M; i++){
+        cin >> a;
+        if (num[a] == true) cout << "1\n";
+        else cout << "0\n";
     }
 }
