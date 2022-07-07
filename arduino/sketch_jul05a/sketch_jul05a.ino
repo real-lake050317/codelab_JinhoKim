@@ -7,8 +7,7 @@ MPU6050 accelgyro;
 Adafruit_BMP085 bmp;
 //HMC5883L_Simple Compass;
 
-int16_t ax, ay, az;
-int16_t gx, gy, gz;
+int16_t ax, ay, az, gx, gy, gz;
 
 void setup() {
   Serial.begin(9600);
