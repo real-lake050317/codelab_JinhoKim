@@ -58,8 +58,6 @@ void loop() {
   Serial.print("gx: ");Serial.print(gx); Serial.print("\n");
   Serial.print("gy: ");Serial.print(gy); Serial.print("\n");
   Serial.print("gz: ");Serial.println(gz);
-
-
   //float heading = Compass.GetHeadingDegrees();
   //Serial.print("Heading: \t");
   //Serial.println( heading );
