@@ -1,4 +1,8 @@
 #include <iostream>
+#include <vector>
+#include <cmath>
+#include <numeric>
+#define ll long long
 using namespace std;
 
 namespace miller_rabin {

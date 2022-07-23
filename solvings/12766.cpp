@@ -1,4 +1,7 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <queue>
+#include <vector>
+#include <memory.h>
 using namespace std;
 
 int n, b, s, r;
