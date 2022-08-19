@@ -36,8 +36,7 @@ void bfs (int k) {
 	}
 }
 
-int main()
-{
+int main() {
 	cin >> n >> m >> v;
 
 	int a, b;
