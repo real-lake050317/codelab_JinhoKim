@@ -2,8 +2,6 @@
 
 #include <stdio.h>
 
- 
-
 struct student {
     char name[10];
     int id;
@@ -27,6 +25,6 @@ int main(){
 		}
 	}
 	for (int i = 0; i<index; i++){
-		printf("%s", st[index].name)
+		printf("%s", st[index].name);
 	}
 }

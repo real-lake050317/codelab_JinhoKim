@@ -27,7 +27,7 @@ int main() {
 		int last_s = -1;
 		for (int j = 0; j < v[i].size(); j++) {
 			if (v[i][j].s != j % 2) {
-				answer = false;
+				ans = false;
 				break;
 			}
 			if (v[i][j].s == 1) {
