@@ -1,6 +1,6 @@
 #include <x86intrin.h>
 #include <bitset>
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 template<size_t _Nw> void _M_do_sub(_Base_bitset<_Nw>& A, const _Base_bitset<_Nw>& B) {
@@ -30,4 +30,6 @@ int main() {
     string a, b; 
     cin >> a >> b;
     cout << LCS(a, b) << endl;
+
+    return 0;
 }
