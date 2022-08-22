@@ -12,7 +12,7 @@ int main() {
     stack<int> dp;
 
     bool flag = 0;
-    
+
     cin >> a >> b;
     
     for (int i = 0; i<strlen(a); i++) {
