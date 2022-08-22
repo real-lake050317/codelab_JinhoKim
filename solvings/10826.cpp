@@ -3,25 +3,14 @@
 #include <vector>
 using namespace std;
 
-int n;
-
-
-void printStack(stack<int> a) {
-    while (!a.empty()) {
-        cout << a.top();
-        a.pop();
-    }
-    cout << "\n";
-} 
-
-stack<int> sum(stack<int> anum, stack<int> bnum) {
+stack<int> sumStack(stack<int> a, stack<int> b) {
     stack<int> dp;
 
     bool flag = 0;
-    
-    while (!anum.empty() && !bnum.empty()) {
-        int aint = anum.top();
-        int bint = bnum.top();
+
+    while (!a.empty() && !b.empty()) {
+        int aint = a.top();
+        int bint = b.top();
         if (aint + bint + flag >= 10) {
             dp.push((aint + bint + flag)%10);
             flag = 1;
@@ -29,12 +18,12 @@ stack<int> sum(stack<int> anum, stack<int> bnum) {
             dp.push((aint + bint + flag)%10);
             flag = 0;
         }
-        anum.pop();
-        bnum.pop();
+        a.pop();
+        b.pop();
     }
 
-    while (!anum.empty()) {
-        int aint = anum.top();
+    while (!a.empty()) {
+        int aint = a.top();
         if (aint + flag >= 10) {
             dp.push((aint + flag)%10);
             flag = 1;
@@ -43,11 +32,11 @@ stack<int> sum(stack<int> anum, stack<int> bnum) {
             dp.push((aint + flag)%10);
             flag = 0;
         }
-        anum.pop();
+        a.pop();
     }
 
-    while (!bnum.empty()) {
-        int bint = bnum.top();
+    while (!b.empty()) {
+        int bint = b.top();
         if (bint + flag >= 10) {
             dp.push((bint + flag) % 10);
             flag = 1;
@@ -56,36 +45,43 @@ stack<int> sum(stack<int> anum, stack<int> bnum) {
             dp.push((bint + flag)%10);
             flag = 0;
         }
-        bnum.pop();
+        b.pop();
     }
 
     if (flag) {
         dp.push(1);
     }
+
+    while (!dp.empty()) {
+        int a = dp.top();
+        cout << a;
+        dp.pop();
+    }
+
     return dp;
 }
 
+void printStack(stack<int> s) {
+    while (!s.empty()) {
+        int a = s.top();
+        cout << a;
+        s.pop();
+    }
+}
 
 int main() {
-    stack<int> anum;
-    stack<int> bnum;
-    vector<stack<int> > fib;
-    int n;
-    cin >> n;
-    anum.push(0);
-    bnum.push(1);
-    fib.push_back(anum);
-    fib.push_back(bnum);
-    for (int i = 2; i<=n; i++) {
-        fib.push_back(sum(fib[i-1], fib[i-2]));
+    int N;
+    cin >> N;
+    vector<stack<int> > vec;
+    stack<int> a;
+    stack<int> b;
+    a.push(0);
+    b.push(1);
+    vec.push_back(a);
+    vec.push_back(b);
+    for (int i = 2; i<N; i++){
+        stack<int> c = sumStack(vec[i-1], vec[i-2]);
+        printStack(sumStack(vec[i-1], vec[i-2]));
+        vec.push_back(c);
     }
-    printStack(fib[6]);
-    printStack(fib[7]);
-    printStack(sum(fib[6], fib[7]));
-    //printStack(sum(testa, testb));
-
-    /*
-    stack<int> ans = fib[n-1];
-    printStack(ans);
-    */
 }
