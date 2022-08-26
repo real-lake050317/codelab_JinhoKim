@@ -3,7 +3,9 @@
 using namespace std;
 
 struct data{
-	int x, y, z;
+	int x;
+	int y; 
+	int z;
 };
 
 bool cmp(data a, data b){
