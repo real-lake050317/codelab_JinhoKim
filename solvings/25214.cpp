@@ -9,6 +9,6 @@ int main() {
         cin >> arr[i];
         if (arr[i] > maxVal) maxVal = arr[i];
         if (arr[i] < minVal) minVal = arr[i];
-        cout << maxVal - minVal << endl;
+        cout << maxVal - minVal << endl;    
     }
 }
