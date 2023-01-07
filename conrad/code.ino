@@ -1,7 +1,11 @@
 #include <Servo.h>
+#define DEG_TO_RAD 0.017453292519943295769236907684886
+#define RAD_TO_DEG 57.295779513082320876798154814105
 
 const int firstServoPin = 9;
 const int secondServoPin = 10;
+
+
 
 Servo firstServo;
 Servo secondServo;
@@ -24,12 +28,18 @@ void loop() {
   Serial.println("Enter z value");
   double z = Serial.read();
 
-  Serial.println("Input Values: " + x + " " + y + " " + x
+  // Serial.println("Input Values: " + x + " " + y + " " + z);
+
+  double radX = x * DEG_TO_RAD;
+  double radY = y * DEG_TO_RAD;
+  double radZ = z * DEG_TO_RAD;
   
   int phi = atan(y/z);
   int theta = acos(z/sqrt(sq(x) + sq(y)+ sq(z)));
+
   
-  Serial.println("phi value / first servo angle :" + phi);
-  Serial.println("theta value / second servo angle: " + theta);
+  
+  // Serial.println("phi value / first servo angle :" + phi);
+  // Serial.println("theta value / second servo angle: " + theta);
   
 }
