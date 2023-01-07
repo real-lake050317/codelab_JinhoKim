@@ -1,11 +1,12 @@
 #include <Servo.h>
-#define DEG_TO_RAD 0.017453292519943295769236907684886
-#define RAD_TO_DEG 57.295779513082320876798154814105
+#include <arduino.h>
+#include <math.h>
+
+#define DEG_TO_RAD 0.0174532925199432
+#define RAD_TO_DEG 57.2957795130823208
 
 const int firstServoPin = 9;
 const int secondServoPin = 10;
-
-
 
 Servo firstServo;
 Servo secondServo;
@@ -28,18 +29,32 @@ void loop() {
   Serial.println("Enter z value");
   double z = Serial.read();
 
-  // Serial.println("Input Values: " + x + " " + y + " " + z);
-
+  Serial.print("x value: ");
+  Serial.println(x);
+  Serial.print("y value: ");
+  Serial.println(y);
+  Serial.print("z value: ");
+  Serial.println(z);
+  
   double radX = x * DEG_TO_RAD;
   double radY = y * DEG_TO_RAD;
   double radZ = z * DEG_TO_RAD;
   
-  int phi = atan(y/z);
-  int theta = acos(z/sqrt(sq(x) + sq(y)+ sq(z)));
+  Serial.print("x value in radian: ");
+  Serial.println(radX);
+  Serial.print("y value in radian: ");
+  Serial.println(radY);
+  Serial.print("z value in radian: ");
+  Serial.println(radZ);
+  
+  int phi = atan(radY/radZ);
+  int theta = acos(radZ/sqrt(sq(radX) + sq(radY)+ sq(radZ)));
 
+  firstAngle = phi;
+  secondAngle = theta;
   
-  
-  // Serial.println("phi value / first servo angle :" + phi);
-  // Serial.println("theta value / second servo angle: " + theta);
-  
+  Serial.print("phi value / first servo angle :");
+  Serial.println(phi);
+  Serial.print("theta value / second servo angle: ");
+  Serial.println(theta);
 }
