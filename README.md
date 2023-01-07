@@ -4,7 +4,6 @@
 
 + This repository was made to store my competitive programming answer sheets, practice codes, forked code, etc..
 + I do PS on <a href = "https://acmicpc.net">acmicpc.net</a>, AKA. BOJ, 백준.
-+ This is my personal link: 
 
 ### About the repository
 
