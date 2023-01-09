@@ -95,7 +95,11 @@ void loop() {
 
   firstServo.write(phi);
   secondServo.write(theta);
-
+  
+  Serial.print("Processing... Please Wait");
+  
+  delay(2500);
+  
   Serial.print("Execution Done");
 
   /*
@@ -106,5 +110,5 @@ void loop() {
     Serial.println("Enter z value");
     double z = Serial.read();
   */
-  exit(1);
+  exit(0);
 }
