@@ -9,13 +9,12 @@
 
 #define I2CDEV_IMPLEMENTATION_WARNINGS
 
-#define I2CDEV_ARDUINO_WIRE         1 // Wire object from Arduino
-#define I2CDEV_BUILTIN_NBWIRE       2 // Tweaked Wire object from Gene Knight's NBWire project
-                                      // ^^^ NBWire implementation is still buggy w/some interrupts!
-#define I2CDEV_BUILTIN_FASTWIRE     3 // FastWire object from Francesco Ferrara's project
-#define I2CDEV_I2CMASTER_LIBRARY    4 // I2C object from DSSCircuits I2C-Master Library at https://github.com/DSSCircuits/I2C-Master-Library
-#define I2CDEV_BUILTIN_SBWIRE	    5 // I2C object from Shuning (Steve) Bian's SBWire Library at https://github.com/freespace/SBWire 
-#define I2CDEV_TEENSY_3X_WIRE       6 // Teensy 3.x support using i2c_t3 library
+#define I2CDEV_ARDUINO_WIRE         1
+#define I2CDEV_BUILTIN_NBWIRE       2
+#define I2CDEV_BUILTIN_FASTWIRE     3
+#define I2CDEV_I2CMASTER_LIBRARY    4
+#define I2CDEV_BUILTIN_SBWIRE	    5
+#define I2CDEV_TEENSY_3X_WIRE       6
 
 #ifdef ARDUINO
     #if ARDUINO < 100
@@ -45,21 +44,16 @@
 
 #ifndef I2CDEVLIB_WIRE_BUFFER_LENGTH
     #if defined(I2C_BUFFER_LENGTH)
-        // Arduino ESP32 core Wire uses this
         #define I2CDEVLIB_WIRE_BUFFER_LENGTH I2C_BUFFER_LENGTH
     #elif defined(BUFFER_LENGTH)
-        // Arduino AVR core Wire and many others use this
         #define I2CDEVLIB_WIRE_BUFFER_LENGTH BUFFER_LENGTH
     #elif defined(SERIAL_BUFFER_SIZE)
-        // Arduino SAMD core Wire uses this
         #define I2CDEVLIB_WIRE_BUFFER_LENGTH SERIAL_BUFFER_SIZE
     #else
-        // should be a safe fallback, though possibly inefficient
         #define I2CDEVLIB_WIRE_BUFFER_LENGTH 32
     #endif
 #endif
 
-// 1000ms default read timeout (modify with "I2Cdev::readTimeout = [ms];")
 #define I2CDEV_DEFAULT_READ_TIMEOUT     1000
 
 class I2Cdev {
@@ -88,18 +82,15 @@ class I2Cdev {
 };
 
 #if I2CDEV_IMPLEMENTATION == I2CDEV_BUILTIN_FASTWIRE
-    /* Master */
     #define TW_START                0x08
     #define TW_REP_START            0x10
 
-    /* Master Transmitter */
     #define TW_MT_SLA_ACK           0x18
     #define TW_MT_SLA_NACK          0x20
     #define TW_MT_DATA_ACK          0x28
     #define TW_MT_DATA_NACK         0x30
     #define TW_MT_ARB_LOST          0x38
 
-    /* Master Receiver */
     #define TW_MR_ARB_LOST          0x38
     #define TW_MR_SLA_ACK           0x40
     #define TW_MR_SLA_NACK          0x48
@@ -112,7 +103,6 @@ class I2Cdev {
     class Fastwire {
         private:
             static boolean waitInt();
-
         public:
             static void setup(int khz, boolean pullup);
             static byte beginTransmission(byte device);
@@ -126,19 +116,15 @@ class I2Cdev {
 
 #if I2CDEV_IMPLEMENTATION == I2CDEV_BUILTIN_NBWIRE
     #define NBWIRE_BUFFER_LENGTH 32
-
     class TwoWire {
         private:
             static uint8_t rxBuffer[];
             static uint8_t rxBufferIndex;
             static uint8_t rxBufferLength;
-
             static uint8_t txAddress;
             static uint8_t txBuffer[];
             static uint8_t txBufferIndex;
             static uint8_t txBufferLength;
-
-            // static uint8_t transmitting;
             static void (*user_onRequest)(void);
             static void (*user_onReceive)(int);
             static void onRequestService(void);
@@ -181,8 +167,6 @@ class I2Cdev {
     #define CPU_FREQ            16000000L
     #define TWI_FREQ            100000L
     #define TWI_BUFFER_LENGTH   32
-
-    /* TWI Status is in TWSR, in the top 5 bits: TWS7 - TWS3 */
 
     #define TW_STATUS_MASK              ((1 << TWS7)|(1 << TWS6)|(1 << TWS5)|(1 << TWS4)|(1 << TWS3))
     #define TW_STATUS                   (TWSR & TW_STATUS_MASK)
