@@ -33,8 +33,7 @@
 #define COMPASS_VERTICAL_X_EAST ((COMPASS_EAST << 6) | (COMPASS_UP << 3) | COMPASS_SOUTH) << 5
 #define COMPASS_VERTICAL_Y_WEST ((COMPASS_UP << 6) | (COMPASS_WEST << 3) | COMPASS_SOUTH) << 5
 
-class HMC5883L_Simple
-{
+class HMC5883L_Simple {
 public:
   HMC5883L_Simple();
   void SetScale(uint16_t sampling_mode);
@@ -48,8 +47,7 @@ protected:
   void Write(uint8_t address, uint8_t byte);
   uint8_t Read(uint8_t register_address, uint8_t buffer[], uint8_t length);
 
-  struct MagnetometerSample
-  {
+  struct MagnetometerSample {
     int X;
     int Y;
     int Z;

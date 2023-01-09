@@ -8,14 +8,13 @@
 
 HMC5883L_Simple Compass;
 
-struct coordinates
-{
+struct coordinates {
   double x;
   double y;
   double z;
 };
 
-coordinates c = {1, 2, 3};
+coordinates c = { 1, 2, 3 };
 
 #define DEG_TO_RAD 0.0174532925199432
 #define RAD_TO_DEG 57.2957795130823208
@@ -33,13 +32,10 @@ int secondAngle = 0;
 
 bool isInputFinished = false;
 
-coordinates input_coordinates()
-{
+coordinates input_coordinates() {
   coordinates temp;
   Serial.end();
-  while (Serial.available() == 0)
-  {
-  }
+  while (Serial.available() == 0){}
   temp.x = Serial.parseFloat();
   temp.y = Serial.parseFloat();
   temp.z = Serial.parseFloat();
@@ -47,16 +43,14 @@ coordinates input_coordinates()
   return temp;
 }
 
-void setup()
-{
+void setup() {
   Serial.begin(9600);
   Wire.begin();
   firstServo.attach(firstServoPin);
   secondServo.attach(secondServoPin);
 }
 
-void loop()
-{
+void loop() {
   /*
   Serial.println("Enter coordinates in x y z format");
   Serial.println("Enter coordinate x");
