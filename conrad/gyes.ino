@@ -20,18 +20,6 @@ void setup() {
  
   // initialize devices
   Serial.println("Initializing I2C devices...");
- 
-  // initialize bmp085
-  if (!bmp.begin()) {
-    Serial.println("Could not find a valid BMP085 sensor, check wiring!");
-    while (1) {}
-  }
- 
-  // initialize mpu6050
-  accelgyro.initialize();
-  Serial.println(accelgyro.testConnection() ? "MPU6050 connection successful" : "MPU6050 connection failed");
-  accelgyro.setI2CBypassEnabled(true); // set bypass mode for gateway to hmc5883L
-  
   
   // initialize hmc5883l
   Compass.SetDeclination(23, 35, 'E');
