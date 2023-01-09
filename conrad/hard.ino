@@ -1,10 +1,15 @@
 #include <Servo.h>
 #include <arduino.h>
 #include <math.h>
+#include "I2Cdev.h"
+#include "HMC5883L_Simple.h"
 // #include "module.h"
 // #include "init.h"
 
-struct coordinates {
+HMC5883L_Simple Compass;
+
+struct coordinates
+{
   double x;
   double y;
   double z;
@@ -28,7 +33,8 @@ int secondAngle = 0;
 
 bool isInputFinished = false;
 
-coordinates input_coordinates() {
+coordinates input_coordinates()
+{
   coordinates temp;
   Serial.end();
   while (Serial.available() == 0)
@@ -41,13 +47,16 @@ coordinates input_coordinates() {
   return temp;
 }
 
-void setup() {
+void setup()
+{
   Serial.begin(9600);
+  Wire.begin();
   firstServo.attach(firstServoPin);
   secondServo.attach(secondServoPin);
 }
 
-void loop() {
+void loop()
+{
   /*
   Serial.println("Enter coordinates in x y z format");
   Serial.println("Enter coordinate x");
@@ -58,11 +67,17 @@ void loop() {
 
   c.x = Serial.read() - 48;
   Serial.println(c.x);
-  
+
   isInputFinished = true;
   */
 
   // -----------------------------------------------
+  Serial.println("Initializing I2C devices...");
+
+  Compass.SetDeclination(23, 35, 'E');
+  Compass.SetSamplingMode(COMPASS_SINGLE);
+  Compass.SetScale(COMPASS_SCALE_130);
+  Compass.SetOrientation(COMPASS_HORIZONTAL_X_NORTH);
 
   Serial.print("x value: ");
   Serial.println(c.x);
@@ -95,11 +110,15 @@ void loop() {
 
   firstServo.write(phi);
   secondServo.write(theta);
-  
+
+  float heading = Compass.GetHeadingDegrees();
+  Serial.print("Heading: \t");
+  Serial.println(heading);
+
   Serial.print("Processing... Please Wait");
-  
+
   delay(2500);
-  
+
   Serial.print("Execution Done");
 
   /*
