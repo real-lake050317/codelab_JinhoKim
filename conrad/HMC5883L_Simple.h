@@ -7,6 +7,10 @@
 #define COMPASS_CONFIG_REGISTER_B 0x01
 #define COMPASS_MODE_REGISTER 0x02
 #define COMPASS_DATA_REGISTER 0x03
+#define COMPASS_DATA_CACHE_L1 0x88
+#define COMPASS_DATA_CACHE_L2 0x89
+#define COMPASS_DATA_CACHE_L3 0x90
+#define COMPASS_CONSTANT 0x08
 
 #define COMPASS_CONTINUOUS 0x00
 #define COMPASS_SINGLE 0x01
@@ -36,16 +40,16 @@
 class HMC5883L_Simple {
 public:
   HMC5883L_Simple();
-  void SetScale(uint16_t sampling_mode);
-  void SetOrientation(uint16_t sampling_mode);
+  void SetScale(int sampling_mode);
+  void SetOrientation(int sampling_mode);
   void SetDeclination(int declination_degs, int declination_mins, char declination_dir);
-  void SetSamplingMode(uint16_t sampling_mode);
+  void SetSamplingMode(int sampling_mode);
 
   float GetHeadingDegrees();
 
 protected:
-  void Write(uint8_t address, uint8_t byte);
-  uint8_t Read(uint8_t register_address, uint8_t buffer[], uint8_t length);
+  void Write(int address, int byte);
+  uint8_t Read(int register_address, int buffer[], int length);
 
   struct MagnetometerSample {
     int X;
@@ -55,10 +59,10 @@ protected:
 
   MagnetometerSample ReadAxes();
 
-  uint16_t mode;
+  int mode;
   float declination_offset_radians;
 
 private:
-  uint8_t i2c_address;
+  int i2c_address;
 };
 #endif
