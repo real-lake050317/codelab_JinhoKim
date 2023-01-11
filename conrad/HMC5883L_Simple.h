@@ -1,4 +1,4 @@
-#include <stdint.h>
+// #include <stdint.h>
 #ifndef HMC5883LSimple_h
 #define HMC5883LSimple_h
 #define COMPASS_I2C_ADDRESS 0x3C >> 1
