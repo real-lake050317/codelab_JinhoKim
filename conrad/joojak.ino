@@ -23,7 +23,7 @@ void loop() {
     secondServo.write(secondAngle);
     delay(1000);
     
-    Serial.println("Configuration finished.")
+    Serial.println("Configuration finished.");
 
     firstServo.write(phi);
     secondServo.write(theta);
