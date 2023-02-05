@@ -1,0 +1,7 @@
+docker build -f Dockerfile -t fun-docker .
+docker images
+docker rmi <name>
+docker run -d -p 8800:8080 fun-docker
+
+docker container
+docker kill
