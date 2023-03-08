@@ -1,6 +1,6 @@
 import random
 
-cnt = [0]*4
+cnt = [0] * 4
 
 for i in range(30):
     cnt[random.randint(0, 3)] += 1
