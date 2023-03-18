@@ -17,7 +17,5 @@ for i in data:
 print(dict)
 
 # sort data by number data inside each key
-for i in dict:
-    dict[i] = sorted(dict[i])
 
-print(dict)
+
