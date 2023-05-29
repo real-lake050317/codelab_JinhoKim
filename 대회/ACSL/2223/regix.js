@@ -1,11 +1,10 @@
 // regix verification function
 
-function verify(input, answer) {
-  var re = new RegExp(input);
+function verify(answer) {
+  var re = new RegExp("[^e][a-hlr-y]*[\s]*[a-n]*[^mr]*[\S]*[0-9]*");
   return re.test(answer);
 }
 
-input = "00*1*1U11*0*0";
-answer = "0000001111111";
+answer = "python 8";
 
-console.log(verify(input, answer));
+console.log(verify(answer));
